@@ -12,10 +12,14 @@ def do_it(i):
     return i**2
 
 if __name__ == '__main__':
-    cluster_classes = {cls.config_name: cls
-                       for cls in dask_jobqueue.__dict__.values()
-                       if hasattr(cls, 'config_name')}
-    cluster_classes['local'] = distributed.LocalCluster
+    cluster_classes = {'htcondor': dask_jobqueue.HTCondorCluster,
+                       'local': distributed.LocalCluster,
+                       'lsf': dask_jobqueue.LSFCluster,
+                       'moab': dask_jobqueue.MoabCluster,
+                       'oar': dask_jobqueue.OARCluster,
+                       'pbs': dask_jobqueue.PBSCluster,
+                       'sge': dask_jobqueue.SGECluster,
+                       'slurm': dask_jobqueue.SLURMCluster}
 
     parser = argparse.ArgumentParser()
     group = parser.add_argument_group('parallelization',
