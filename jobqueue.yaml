@@ -7,7 +7,9 @@ jobqueue:
     cores: 1
     disk: 1GB
     memory: 2GB
-    job_extra:
+    scheduler-options:
+      interface: eth0
+    job-extra:
       accounting_group: ligo.sim.o3.cbc.pe.bayestar
 
   # NASA Pleiades
