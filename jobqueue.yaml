@@ -1,9 +1,18 @@
 # Copy this file to ~/.config/dask/jobqueue.yaml
 
 jobqueue:
+
+  # LIGO Caltech cluster
+  htcondor:
+    cores: 1
+    disk: 1GB
+    memory: 2GB
+    job_extra:
+      accounting_group: ligo.sim.o3.cbc.pe.bayestar
+
   # NASA Pleiades
   pbs:
-    resource_spec: select=1:model=san
     cores: 16
     memory: 32GB
+    resource_spec: select=1:model=san
     queue: debug
