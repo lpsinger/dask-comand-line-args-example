@@ -4,7 +4,6 @@ import time
 
 import dask_jobqueue
 import distributed
-from tqdm import tqdm
 
 
 def do_it(i):
@@ -33,5 +32,5 @@ if __name__ == '__main__':
     cluster = cluster_class()
     cluster.adapt(maximum=args.jobs)
     client = distributed.Client(cluster)
-    for future in tqdm(distributed.as_completed(client.map(do_it, range(10)))):
+    for future in distributed.as_completed(client.map(do_it, range(10))):
         print(future.result())
