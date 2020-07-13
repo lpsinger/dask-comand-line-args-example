@@ -1,0 +1,9 @@
+# Copy this file to ~/.config/dask/jobqueue.yaml
+
+jobqueue:
+  # NASA Pleiades
+  pbs:
+    resource_spec: select=1:model=san
+    cores: 16
+    memory: 32GB
+    queue: debug
