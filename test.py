@@ -4,7 +4,7 @@ import time
 
 import dask_jobqueue
 import distributed
-import tqdm
+from tqdm import tqdm
 
 
 def do_it(i):
