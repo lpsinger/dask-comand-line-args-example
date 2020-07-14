@@ -1,5 +1,15 @@
 # Copy this file to ~/.config/dask/jobqueue.yaml
 
+distributed:
+  comm:
+    tls:
+      scheduler:
+        cert: ~/.config/dask/cert.pem
+      worker:
+        cert: ~/.config/dask/cert.pem
+      client:
+        cert: ~/.config/dask/cert.pem
+
 jobqueue:
 
   # LIGO Caltech cluster

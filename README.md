@@ -9,7 +9,6 @@ using multiple local processes or one of many cluster job schedulers including
 
 1.  Clone this repository:
 
-        $ cd ~
         $ git clone https://github.com/lpsinger/dask-comand-line-args-example
         $ cd dask-comand-line-args-example
 
@@ -22,19 +21,20 @@ using multiple local processes or one of many cluster job schedulers including
     Note that it is important that dask-jobqueue is installed from git rather
     than from the Python Package Index because of [dask/dask-jobqueue#405].
 
-3.  Symlink or copy the file `jobqueue.yaml` into the directory
-    `~/.config/dask`:
+3.  Copy the file `jobqueue.yaml` into the directory `~/.config/dask`:
 
         $ mkdir -p ~/.config/dask
-        $ pushd ~/.config/dask
-        $ ln -s ~/dask-comand-line-args-example/jobqueue.yaml
-        $ popd
+        $ cp jobqueue.yaml ~/.config/dask
 
-4.  Try out the test script using local workers (no cluster scheduler):
+4.  Create a self-signed certificate to encrypt Dask's communication:
+
+        $ openssl req -x509 -keyout ~/.config/dask/cert.pem -out ~/.config/dask/cert.pem -days 365 -nodes -batch
+
+5.  Try out the test script using local workers (no cluster scheduler):
 
         $ ./test.py -j 2
 
-5.  Try out the test script using your cluster's scheduler.
+6.  Try out the test script using your cluster's scheduler.
 
     On the LIGO Caltech cluster:
 
