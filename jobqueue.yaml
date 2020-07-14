@@ -26,6 +26,6 @@ jobqueue:
   pbs:
     cores: 16
     memory: 32GB
-    resource_spec: select=1:model=san
+    resource-spec: select=1:model=san
     interface: ib0
     queue: debug
