@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import argparse
+import tempfile
 import time
 
 import dask_jobqueue
@@ -29,7 +30,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     cluster_class = cluster_classes[args.cluster]
-    cluster = cluster_class()
+    cluster = cluster_class(dashboard_address=None,
+                            local_directory=tempfile.gettempdir())
     cluster.adapt(maximum=args.jobs)
     client = distributed.Client(cluster)
     for future in distributed.as_completed(client.map(do_it, range(10))):
