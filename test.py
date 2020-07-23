@@ -32,7 +32,7 @@ if __name__ == '__main__':
     cluster_class = cluster_classes[args.cluster]
     cluster = cluster_class(dashboard_address=None,
                             local_directory=tempfile.gettempdir())
-    cluster.adapt(maximum=args.jobs)
+    cluster.scale(args.jobs)
     client = distributed.Client(cluster)
     for future in distributed.as_completed(client.map(do_it, range(10))):
         print(future.result())
