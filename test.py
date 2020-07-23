@@ -39,5 +39,5 @@ if __name__ == '__main__':
 
     func = functools.partial(do_it, np.arange(12000))
     futures = client.map(func, np.arange(10000))
-    for future, result in distributed.as_completed(futures):
+    for future, result in distributed.as_completed(futures, with_results=True):
         print(future.result())
